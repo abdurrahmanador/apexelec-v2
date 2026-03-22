@@ -1,0 +1,284 @@
+/* ---- CONTACT CARDS ---- */
+.cardsSection {
+  padding: 48px 0;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.contactCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 18px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: var(--transition);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.contactCard::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--accent), var(--accent-dark));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+
+.contactCard:hover {
+  border-color: var(--border-accent);
+  background: white;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-accent);
+}
+
+.contactCard:hover::after { transform: scaleX(1); }
+
+.cardIcon {
+  width: 46px;
+  height: 46px;
+  background: linear-gradient(135deg, rgba(0, 74, 173, 0.1), rgba(16, 1, 109, 0.07));
+  border: 1px solid rgba(0, 74, 173, 0.15);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.cardLabel {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.cardValue {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardDesc {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.cardArrow {
+  color: var(--accent);
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.contactCard:hover .cardArrow { opacity: 1; }
+
+/* ---- MAIN GRID ---- */
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ---- FORM ---- */
+.formWrap {}
+
+.formHeader { margin-bottom: 36px; }
+.formHeader h2 { margin: 10px 0 12px; }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.submitBtn {
+  width: 100%;
+  justify-content: center;
+  font-size: 1.05rem;
+  padding: 16px;
+}
+
+.formNote {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.formNote strong { color: var(--text-secondary); }
+
+/* ---- SUCCESS ---- */
+.successBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 48px 40px;
+  background: white;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.successBox h3 { font-size: 1.8rem; color: var(--text-primary); }
+.successBox p { color: var(--text-muted); font-size: 0.95rem; }
+.successBox a { color: var(--accent); }
+
+/* ---- MAP COLUMN ---- */
+.mapCol {
+  position: sticky;
+  top: calc(var(--nav-height) + 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mapHeader { margin-bottom: 4px; }
+.mapHeader h2 { margin-top: 10px; font-size: clamp(1.5rem, 3vw, 2.2rem); }
+
+.mapFrame {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+  /* NO dark filter — light theme shows map normally */
+}
+
+.mapBtn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ---- HOURS ---- */
+.hoursBox {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.hoursHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-primary);
+}
+
+.hoursHeader h4 {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.hoursList {
+  list-style: none;
+  padding: 4px 0;
+}
+
+.hoursList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 22px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.hoursList li:last-child { border-bottom: none; }
+
+.hoursTime {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: var(--accent);
+  font-size: 0.85rem;
+}
+
+/* ---- WHATSAPP BOX ---- */
+.waBox {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 22px;
+  background: rgba(37, 211, 102, 0.06);
+  border: 1px solid rgba(37, 211, 102, 0.25);
+  border-radius: var(--radius-lg);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.waBox svg { color: #25D366; flex-shrink: 0; }
+
+.waBox > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.waBox strong {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #1aad55;
+}
+
+.waBox span { font-size: 0.83rem; color: var(--text-muted); }
+
+.waBox:hover {
+  background: rgba(37, 211, 102, 0.12);
+  transform: translateY(-2px);
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 1000px) {
+  .cardsGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .mainGrid { grid-template-columns: 1fr; gap: 48px; }
+  .mapCol { position: static; }
+}
+
+@media (max-width: 600px) {
+  .cardsGrid { grid-template-columns: 1fr; }
+  .successBox { padding: 28px 20px; }
+}
