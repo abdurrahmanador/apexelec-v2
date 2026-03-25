@@ -7,12 +7,12 @@ import { submitEnquiry, openMailtoFallback } from '../services/formService'
 import styles from './Contact.module.css'
 
 const CONTACT_ITEMS = [
-  {
-    icon: Phone,
-    label: 'Phone',
-    value: '07442 527146',
-    link: 'tel:07442527146',
-    desc: 'Mon–Sat, 8am–6pm',
+   {
+    icon: MessageCircle,
+    label: 'WhatsApp',
+    value: '07442527146',
+    link: 'https://wa.me/07442527146',
+    desc: 'Quick responses guaranteed',
   },
   {
     icon: Mail,
@@ -21,19 +21,19 @@ const CONTACT_ITEMS = [
     link: 'mailto:info@apexelec.uk',
     desc: 'We reply within 24 hours',
   },
-  {
-    icon: MessageCircle,
-    label: 'WhatsApp',
-    value: '+44 7887 702726',
-    link: 'https://wa.me/447887702726',
-    desc: 'Quick responses guaranteed',
+ {
+    icon: Phone,
+    label: 'Phone',
+    value: '07442 527146',
+    link: 'tel:07442527146',
+    desc: 'Mon–Sat, 8am–6pm',
   },
   {
     icon: MapPin,
     label: 'Location',
-    value: 'United Kingdom',
+    value: 'Leicestershire',
     link: 'https://share.google/Ifq4CGxM6PL3vBuuX',
-    desc: 'Covering across the UK',
+    desc: 'Covering across the Leicestershire',
   },
 ]
 
@@ -286,7 +286,7 @@ export default function Contact() {
 
               {/* WhatsApp CTA */}
               <a
-                href="https://wa.me/447887702726"
+                href="https://wa.me/447442527146"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.waBox}
@@ -294,7 +294,7 @@ export default function Contact() {
                 <MessageCircle size={28} />
                 <div>
                   <strong>Chat on WhatsApp</strong>
-                  <span>+44 7887 702726 — Quick, easy enquiries</span>
+                  <span>+44 7442 527146 — Quick, easy enquiries</span>
                 </div>
               </a>
             </div>

@@ -9,7 +9,7 @@
   right: 0;
   height: var(--nav-height);
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
@@ -17,7 +17,7 @@
 }
 
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.98);
+  background: rgba(255, 255, 255, 0.99);
   box-shadow: 0 2px 20px rgba(16, 1, 109, 0.08);
 }
 
@@ -33,59 +33,43 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 11px;
   text-decoration: none;
   flex-shrink: 0;
 }
 
-.logoImgWrap {
-  width: 46px;
-  height: 46px;
-  border-radius: 10px;
+.logoIconWrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 9px;
   background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px;
+  padding: 7px;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(0, 74, 173, 0.25);
+  box-shadow: 0 3px 12px rgba(0, 74, 173, 0.28);
 }
 
-.logoImg {
+.logoIcon {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  /* Make transparent logo show white on coloured bg */
+  display: block;
   filter: brightness(0) invert(1);
 }
 
-.logoWords {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  line-height: 1;
+.logoTitle {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: brightness(0) saturate(100%) invert(7%) sepia(96%) saturate(7480%) hue-rotate(241deg) brightness(88%) contrast(110%);
+  transition: filter 0.25s ease;
 }
 
-.logoMain {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 900;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--accent-dark);
-}
-
-.logoSub {
-  color: var(--accent);
-}
-
-.logoTagline {
-  font-family: var(--font-body);
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
+.logo:hover .logoTitle {
+  filter: brightness(0) saturate(100%) invert(19%) sepia(89%) saturate(1600%) hue-rotate(206deg) brightness(90%) contrast(105%);
 }
 
 /* ── Desktop Nav ── */
@@ -124,18 +108,9 @@
   transform-origin: left;
 }
 
-.navLink:hover {
-  color: var(--accent);
-  background: var(--accent-glow);
-}
-
-.navLink:hover::after { transform: scaleX(1); }
-
-.navLink.active {
-  color: var(--accent);
-  background: var(--accent-glow);
-}
-
+.navLink:hover { color: var(--accent); background: var(--accent-glow); }
+.navLink:hover::after  { transform: scaleX(1); }
+.navLink.active        { color: var(--accent); background: var(--accent-glow); }
 .navLink.active::after { transform: scaleX(1); }
 
 /* ── CTA Button ── */
@@ -156,6 +131,7 @@
   flex-shrink: 0;
   transition: var(--transition);
   box-shadow: 0 2px 12px rgba(0, 74, 173, 0.25);
+  text-decoration: none;
 }
 
 .ctaBtn:hover {
@@ -167,13 +143,17 @@
 .hamburger {
   display: none;
   background: none;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: var(--radius);
   color: var(--text-primary);
   cursor: pointer;
   padding: 8px;
   margin-left: auto;
   transition: var(--transition);
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  min-height: 42px;
 }
 
 .hamburger:hover {
@@ -186,7 +166,7 @@
 .backdrop {
   position: fixed;
   inset: var(--nav-height) 0 0 0;
-  background: rgba(10, 10, 26, 0.4);
+  background: rgba(10, 10, 26, 0.5);
   backdrop-filter: blur(2px);
   z-index: 998;
 }
@@ -204,25 +184,25 @@
   transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 999;
   overflow-y: auto;
-  box-shadow: -8px 0 40px rgba(16, 1, 109, 0.12);
+  box-shadow: -8px 0 40px rgba(16, 1, 109, 0.15);
 }
 
-.drawerOpen {
-  transform: translateX(0);
-}
+.drawerOpen { transform: translateX(0); }
 
 .drawerNav {
   display: flex;
   flex-direction: column;
   padding: 24px;
-  gap: 6px;
+  gap: 4px;
 }
 
 .drawerLink {
-  display: block;
-  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
   font-family: var(--font-heading);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -230,7 +210,10 @@
   border-radius: var(--radius);
   transition: var(--transition);
   border-left: 3px solid transparent;
+  text-decoration: none;
 }
+
+.drawerLink svg { color: var(--text-muted); flex-shrink: 0; }
 
 .drawerLink:hover {
   color: var(--accent);
@@ -238,15 +221,19 @@
   border-left-color: var(--accent);
 }
 
+.drawerLink:hover svg { color: var(--accent); }
+
 .drawerActive {
   color: var(--accent) !important;
   background: var(--accent-glow) !important;
   border-left-color: var(--accent) !important;
 }
 
+.drawerActive svg { color: var(--accent) !important; }
+
 .drawerContact {
-  margin-top: 20px;
-  padding-top: 20px;
+  margin-top: 24px;
+  padding-top: 24px;
   border-top: 1px solid var(--border);
   display: flex;
   flex-direction: column;
@@ -259,13 +246,78 @@
   font-size: 0.9rem;
   color: var(--text-muted);
   transition: color 0.2s;
+  text-decoration: none;
 }
 
 .drawerEmail:hover { color: var(--accent); }
 
+/* ══════════════════════════════════════════
+   MOBILE BOTTOM NAV BAR
+   Shows on mobile instead of hamburger drawer
+   ══════════════════════════════════════════ */
+.bottomNav {
+  display: none; /* hidden on desktop */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -4px 24px rgba(16, 1, 109, 0.1);
+  padding: 8px 0 env(safe-area-inset-bottom, 8px); /* iPhone notch support */
+}
+
+.bottomNavItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex: 1;
+  padding: 6px 4px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-family: var(--font-heading);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  min-height: 52px;
+}
+
+.bottomNavItem svg {
+  transition: transform 0.2s ease;
+}
+
+.bottomNavItem:hover {
+  color: var(--accent);
+}
+
+.bottomNavActive {
+  color: var(--accent) !important;
+}
+
+.bottomNavActive svg {
+  transform: translateY(-2px);
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .desktopNav { display: none; }
-  .ctaBtn { display: none; }
-  .hamburger { display: flex; }
+  .ctaBtn     { display: none; }
+  .hamburger  { display: none; } /* hide hamburger — bottom nav takes over */
+  .bottomNav  {
+    display: flex;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 400px) {
+  .logoTitle    { height: 26px; }
+  .logoIconWrap { width: 34px; height: 34px; }
+  .bottomNavItem { font-size: 0.55rem; }
 }

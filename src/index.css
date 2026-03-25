@@ -378,3 +378,15 @@ img { max-width: 100%; height: auto; display: block; }
   .container { padding: 0 16px; }
   h1 { font-size: clamp(2.5rem, 10vw, 4rem); }
 }
+/* ---- MOBILE BOTTOM NAV SPACING ---- */
+
+@media (max-width: 900px) {
+  .page-wrapper {
+    padding-bottom: 72px;
+  }
+ 
+  footer {
+    padding-bottom: 72px;
+  }
+}
+ 

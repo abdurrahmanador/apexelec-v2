@@ -33,7 +33,7 @@ export default function Footer() {
           <div className={styles.ctaStripInner}>
             <div className={styles.ctaStripText}>
               <Shield size={20} />
-              <span>Trusted Electrical &amp; Security Specialists — Covering Across the UK</span>
+              <span>Trusted Electrical &amp; Security Specialists — Covering Across the Leicestershire</span>
             </div>
             <a href="tel:07442527146" className={styles.ctaStripPhone}>
               <Phone size={16} /> 07442 527146
@@ -49,16 +49,12 @@ export default function Footer() {
 
             {/* Brand Column */}
             <div className={styles.brand}>
+              {/* Logo — no setOpen here, Footer doesn't control the drawer */}
               <Link to="/" className={styles.logo}>
                 <div className={styles.logoMark}>
-                  <img src="/logo.png" alt="Apexelec" className={styles.logoImg} />
+                  <img src="/logo.png" alt="Apexelec icon" className={styles.logoImg} />
                 </div>
-                <div>
-                  <div className={styles.logoText}>
-                    APEX<span className={styles.logoAccent}>ELEC</span>
-                  </div>
-                  <div className={styles.logoTagline}>Electrical &amp; Security</div>
-                </div>
+                <img src="/logo_title.png" alt="Apexelec" className={styles.logoTitle} />
               </Link>
 
               <p className={styles.brandDesc}>
@@ -67,7 +63,7 @@ export default function Footer() {
               </p>
 
               <a
-                href="https://wa.me/447887702726"
+                href="https://wa.me/447442527146"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.whatsapp}

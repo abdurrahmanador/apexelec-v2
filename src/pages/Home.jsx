@@ -2,15 +2,23 @@ import { Link } from 'react-router-dom'
 import {
   Zap, ShieldCheck, Camera, Phone, Mail, ArrowRight,
   CheckCircle2, Star, Clock, Award, Users, MessageCircle,
-  ChevronRight
+  ChevronRight, MapPin
 } from 'lucide-react'
 import styles from './Home.module.css'
 
+const CERTS = [
+  { src: '/certs/city_guild.png',  alt: 'City & Guilds' },
+  { src: '/certs/trustmark.png',   alt: 'TrustMark' },
+  { src: '/certs/napit.png',       alt: 'NAPIT' },
+  { src: '/certs/napit_elect.png', alt: 'Competent Person' },
+  { src: '/certs/part.png',alt:'Part P Certified' },
+]
+
 const STATS = [
-  { value: '500+', label: 'Projects Completed' },
-  { value: '10+', label: 'Years Experience' },
-  { value: '100%', label: 'Satisfaction Rate' },
-  { value: '24/7', label: 'Support Available' },
+  { value: '100+', label: 'Projects Done' },
+  { value: '10+',  label: 'Years Experience' },
+  { value: '100%', label: 'Satisfaction' },
+  { value: '24/7', label: 'Support' },
 ]
 
 const SERVICES = [
@@ -18,27 +26,27 @@ const SERVICES = [
     icon: Zap,
     title: 'Electrical Installations',
     desc: 'Full domestic and commercial electrical solutions — consumer units, wiring, testing, and certifications.',
-    link: '/services',
-    tag: 'NICEIC Approved',
+    tag: 'NAPIT Approved',
+    color: '#004aad',
   },
   {
     icon: ShieldCheck,
     title: 'Intruder Alarm Systems',
-    desc: 'Grade-A intruder alarm systems with smart monitoring, wireless sensors, and rapid response integration.',
-    link: '/services',
+    desc: 'Grade-A systems with smart monitoring, wireless sensors, and rapid response integration.',
     tag: 'Grade 2 & 3',
+    color: '#10016d',
   },
   {
     icon: Camera,
     title: 'CCTV Systems',
-    desc: '4K HD surveillance cameras with remote viewing, night vision, and cloud storage for homes and businesses.',
-    link: '/services',
+    desc: '4K HD surveillance with remote viewing, night vision, and cloud storage for homes and businesses.',
     tag: '4K Ultra HD',
+    color: '#004aad',
   },
 ]
 
 const WHY = [
-  'NICEIC Approved Contractor',
+  'NAPIT Approved Contractor',
   'Free on-site assessment',
   'Fully insured & certified',
   'Transparent fixed pricing',
@@ -46,170 +54,185 @@ const WHY = [
   'Aftercare & maintenance',
 ]
 
-const WHY_CARDS = [
-  {
-    icon: Award,
-    title: 'NICEIC Approved',
-    desc: 'All our electricians are fully certified and NICEIC approved, ensuring every job meets the highest safety standards.',
-  },
-  {
-    icon: Clock,
-    title: 'Prompt Response',
-    desc: 'We understand urgency. Our team is ready to respond quickly and get your systems operational without delay.',
-  },
-  {
-    icon: Users,
-    title: 'Local Expertise',
-    desc: 'Rooted in the UK community, we bring a personal touch with professional-grade results that national chains simply cannot match.',
-  },
-]
-
 export default function Home() {
   return (
     <div className="page-wrapper">
 
-      {/* ═══════════════════ HERO ═══════════════════ */}
+      {/* ══════════════════════════════════════════
+          HERO
+      ══════════════════════════════════════════ */}
       <section className={styles.hero}>
-        <div className={styles.heroDecor}>
-          <div className={styles.heroGrid} />
-          <div className={styles.heroBlob1} />
-          <div className={styles.heroBlob2} />
+
+        {/* Background decoration */}
+        <div className={styles.heroBg}>
+          <div className={styles.bgGrid} />
+          <div className={styles.bgBlob} />
+          <div className={styles.bgStripe} />
         </div>
 
-        <div className={`container ${styles.heroInner}`}>
-          <div className={styles.heroBadge}>
-            <span className={styles.badgeDot} />
-            UK's Trusted Electrical &amp; Security Experts
-          </div>
+        <div className={`container ${styles.heroWrap}`}>
 
-          <h1 className={styles.heroTitle}>
-            Powering Safety.
-            <br />
-            <span className={styles.heroGrad}>Securing</span> Futures.
-          </h1>
+          {/* ── LEFT COLUMN ── */}
+          <div className={styles.heroContent}>
 
-          <p className={styles.heroDesc}>
-            Professional electrical installations, advanced intruder alarm systems, and
-            4K CCTV solutions for homes and businesses across the UK.
-          </p>
+            <div className={styles.badge}>
+              <span className={styles.badgePulse} />
+              UK Electrical &amp; Security Specialists
+            </div>
 
-          <div className={styles.heroCtas}>
-            <Link to="/contact" className="btn btn-primary">
-              Get Free Quote <ArrowRight size={18} />
-            </Link>
-            <a href="tel:07442527146" className={`btn ${styles.heroCallBtn}`}>
-              <Phone size={17} /> Call Us Now
-            </a>
-          </div>
+            <h1 className={styles.heroH1}>
+              Powering<br />
+              <span className={styles.heroGrad}>Safety.</span><br />
+              Securing<br />
+              Futures.
+            </h1>
 
-          <div className={styles.heroTrust}>
-            <div className={styles.stars}>
+            <p className={styles.heroP}>
+              Professional electrical installations, advanced intruder alarms
+              and 4K CCTV for homes and businesses across the Leicestershire.
+            </p>
+
+            <div className={styles.heroCtas}>
+              <Link to="/contact" className="btn btn-primary">
+                Get Free Quote <ArrowRight size={17} />
+              </Link>
+              <a href="tel:07442527146" className={styles.callBtn}>
+                <Phone size={16} /> 07442 527146
+              </a>
+            </div>
+
+            <div className={styles.heroStars}>
               {[...Array(5)].map((_, i) => (
-                <Star key={i} size={15} fill="var(--accent)" color="var(--accent)" />
+                <Star key={i} size={14} fill="var(--accent)" color="var(--accent)" />
+              ))}
+              <span>5-star · 500+ installs</span>
+            </div>
+          </div>
+
+          {/* ── RIGHT COLUMN ── */}
+          <div className={styles.heroRight}>
+
+            {/* Cert circles — 2×2 grid */}
+            <div className={styles.certGrid}>
+              <p className={styles.certLabel}>Accredited By</p>
+              <div className={styles.certCircles}>
+                {CERTS.map((c) => (
+                  <div key={c.alt} className={styles.certCircle} title={c.alt}>
+                    <img src={c.src} alt={c.alt} />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Stats card */}
+            <div className={styles.heroStatsCard}>
+              {STATS.map((s, i) => (
+                <div key={i} className={styles.heroStatItem}>
+                  <span className={styles.heroStatNum}>{s.value}</span>
+                  <span className={styles.heroStatLbl}>{s.label}</span>
+                </div>
               ))}
             </div>
-            <span>5-star rated · 500+ installations across the UK</span>
-          </div>
-        </div>
 
-        {/* Floating service pills */}
-        <div className={styles.heroPills}>
-          <span className={styles.pill}><Zap size={13} /> Electrical</span>
-          <span className={styles.pill}><ShieldCheck size={13} /> Intruder Alarms</span>
-          <span className={styles.pill}><Camera size={13} /> CCTV</span>
-        </div>
-      </section>
+            {/* Location badge */}
+            <div className={styles.locationBadge}>
+              <MapPin size={14} />
+              Covering Across the United Kingdom
+            </div>
 
-      {/* ═══════════════════ STATS ═══════════════════ */}
-      <section className={styles.statsSection}>
-        <div className="container">
-          <div className={styles.statsGrid}>
-            {STATS.map((s, i) => (
-              <div key={i} className={styles.statItem}>
-                <span className={styles.statValue}>{s.value}</span>
-                <span className={styles.statLabel}>{s.label}</span>
-              </div>
-            ))}
           </div>
         </div>
       </section>
 
-      {/* ═══════════════════ SERVICES ═══════════════════ */}
-      <section className="section">
+      {/* ══════════════════════════════════════════
+          SERVICES
+      ══════════════════════════════════════════ */}
+      <section className={styles.servicesSection}>
         <div className="container">
-          <div className={styles.sectionHead}>
-            <span className="section-label">What We Do</span>
-            <h2>Expert Services.<br />Exceptional Results.</h2>
-            <p>From a single socket to a complete security overhaul — we cover it all with precision.</p>
+          <div className={styles.sectionTop}>
+            <div>
+              <span className="section-label">What We Do</span>
+              <h2 className={styles.sectionH2}>Expert Services.<br />Exceptional Results.</h2>
+            </div>
+            <p className={styles.sectionP}>From a single socket to a complete security overhaul — we cover it all with precision and care.</p>
           </div>
 
-          <div className={styles.servicesGrid}>
+          <div className={styles.cardsRow}>
             {SERVICES.map((s, i) => (
-              <div key={i} className={`card ${styles.serviceCard}`}>
-                <div className={styles.serviceTop}>
-                  <div className={styles.serviceIconWrap}>
-                    <s.icon size={26} />
-                  </div>
-                  <span className={styles.servicePill}>{s.tag}</span>
+              <div key={i} className={styles.serviceCard} style={{ '--card-color': s.color }}>
+                <div className={styles.cardAccent} />
+                <div className={styles.cardIcon}>
+                  <s.icon size={24} />
                 </div>
-                <h3>{s.title}</h3>
-                <p>{s.desc}</p>
-                <Link to={s.link} className={styles.serviceLink}>
-                  Learn More <ChevronRight size={16} />
+                <span className={styles.cardTag}>{s.tag}</span>
+                <h3 className={styles.cardTitle}>{s.title}</h3>
+                <p className={styles.cardDesc}>{s.desc}</p>
+                <Link to="/services" className={styles.cardLink}>
+                  Explore <ChevronRight size={15} />
                 </Link>
               </div>
             ))}
           </div>
-
-          <div className={styles.servicesActions}>
-            <Link to="/services" className="btn btn-ghost">
-              View All Services <ArrowRight size={18} />
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* ═══════════════════ WHY US ═══════════════════ */}
-      <section className={`section ${styles.whySection}`}>
+      {/* ══════════════════════════════════════════
+          WHY US  +  CERT SHOWCASE
+      ══════════════════════════════════════════ */}
+      <section className={styles.whySection}>
         <div className="container">
-          <div className={styles.whyGrid}>
+          <div className={styles.whyWrap}>
 
+            {/* Left — checklist */}
             <div className={styles.whyLeft}>
               <span className="section-label">Why Choose Us</span>
-              <h2>Built on Trust.<br />Delivered with Care.</h2>
-              <p>
+              <h2 className={styles.sectionH2}>Built on Trust.<br />Delivered with Care.</h2>
+              <p style={{ marginBottom: 28 }}>
                 Apexelec has been the preferred choice for homeowners and businesses
-                seeking quality electrical and security installations done right, first time.
+                seeking quality installations done right, first time.
               </p>
 
               <ul className={styles.whyList}>
                 {WHY.map((item, i) => (
-                  <li key={i}>
-                    <CheckCircle2 size={18} />
-                    {item}
-                  </li>
+                  <li key={i}><CheckCircle2 size={17} />{item}</li>
                 ))}
               </ul>
 
-              <div className={styles.whyCtas}>
-                <Link to="/about" className="btn btn-primary">
-                  About Apexelec <ArrowRight size={18} />
-                </Link>
-                <Link to="/contact" className="btn btn-outline">
-                  Get a Quote
-                </Link>
+              <div className={styles.whyActions}>
+                <Link to="/about" className="btn btn-primary">About Us <ArrowRight size={17} /></Link>
+                <Link to="/contact" className="btn btn-outline">Get a Quote</Link>
               </div>
             </div>
 
+            {/* Right — cert showcase + cards */}
             <div className={styles.whyRight}>
-              {WHY_CARDS.map((c, i) => (
-                <div key={i} className={styles.whyCard}>
-                  <div className={styles.whyCardIcon}>
-                    <c.icon size={22} />
-                  </div>
+
+              {/* Cert showcase panel */}
+              <div className={styles.certShowcase}>
+                <p className={styles.certShowcaseLabel}>Our Accreditations &amp; Certifications</p>
+                <div className={styles.certShowcaseRow}>
+                  {CERTS.map((c) => (
+                    <div key={c.alt} className={styles.certShowcaseItem}>
+                      <div className={styles.certShowcaseCircle}>
+                        <img src={c.src} alt={c.alt} />
+                      </div>
+                      <span className={styles.certShowcaseName}>{c.alt}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Quick trust cards */}
+              {[
+                { icon: Award, title: 'NAPIT Approved', desc: 'All engineers certified to the highest UK electrical standards.' },
+                { icon: Clock, title: 'Rapid Response',  desc: 'Fast turnaround. We get your systems live without delay.' },
+                { icon: Users, title: 'Local Experts',   desc: 'Personal service with professional-grade results every time.' },
+              ].map((c, i) => (
+                <div key={i} className={styles.trustCard}>
+                  <div className={styles.trustIcon}><c.icon size={20} /></div>
                   <div>
-                    <h4>{c.title}</h4>
-                    <p>{c.desc}</p>
+                    <h4 className={styles.trustTitle}>{c.title}</h4>
+                    <p className={styles.trustDesc}>{c.desc}</p>
                   </div>
                 </div>
               ))}
@@ -219,61 +242,49 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════════════════ CTA BANNER ═══════════════════ */}
+      {/* ══════════════════════════════════════════
+          CTA BANNER
+      ══════════════════════════════════════════ */}
       <section className={styles.ctaBanner}>
         <div className={styles.ctaBannerBg} />
-        <div className="container">
-          <div className={styles.ctaInner}>
-            <div className={styles.ctaText}>
-              <h2>Ready to Get Started?</h2>
-              <p>Contact us today for your free, no-obligation quote.</p>
-            </div>
-            <div className={styles.ctaBtns}>
-              <Link to="/contact" className={`btn ${styles.ctaPrimaryBtn}`}>
-                Book an Enquiry <ArrowRight size={18} />
-              </Link>
-              <a
-                href="https://wa.me/447887702726"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`btn ${styles.waBtn}`}
-              >
-                <MessageCircle size={18} /> WhatsApp Us
-              </a>
-            </div>
+        <div className={`container ${styles.ctaWrap}`}>
+          <div className={styles.ctaLeft}>
+            <h2 className={styles.ctaH2}>Ready to Get Started?</h2>
+            <p className={styles.ctaP}>Free, no-obligation quote — usually within 24 hours.</p>
+          </div>
+          <div className={styles.ctaBtns}>
+            <Link to="/contact" className={styles.ctaWhiteBtn}>
+              Book an Enquiry <ArrowRight size={17} />
+            </Link>
+            <a
+              href="https://wa.me/07442527146"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.ctaWaBtn}
+            >
+              <MessageCircle size={17} /> WhatsApp Us
+            </a>
           </div>
         </div>
       </section>
 
-      {/* ═══════════════════ CONTACT STRIP ═══════════════════ */}
-      <section className={`section-sm ${styles.contactStrip}`}>
+      {/* ══════════════════════════════════════════
+          CONTACT STRIP
+      ══════════════════════════════════════════ */}
+      <section className={styles.contactStrip}>
         <div className="container">
-          <div className={styles.stripGrid}>
-            <a href="tel:07442527146" className={styles.stripItem}>
-              <div className={styles.stripIcon}><Phone size={20} /></div>
-              <div>
-                <span>Call Us</span>
-                <strong>07442 527146</strong>
-              </div>
-            </a>
+          <div className={styles.stripRow}>
+           <a href="https://wa.me/447442527146" target="_blank" rel="noopener noreferrer" className={styles.stripItem}>
+              <div className={styles.stripIcon}><MessageCircle size={19} /></div>
+              <div><span>WhatsApp</span><strong>+44 7442 527146</strong></div>
+            </a> 
             <a href="mailto:info@apexelec.uk" className={styles.stripItem}>
-              <div className={styles.stripIcon}><Mail size={20} /></div>
-              <div>
-                <span>Email</span>
-                <strong>info@apexelec.uk</strong>
-              </div>
+              <div className={styles.stripIcon}><Mail size={19} /></div>
+              <div><span>Email</span><strong>info@apexelec.uk</strong></div>
             </a>
-            <a
-              href="https://wa.me/447887702726"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.stripItem}
-            >
-              <div className={styles.stripIcon}><MessageCircle size={20} /></div>
-              <div>
-                <span>WhatsApp</span>
-                <strong>+44 7887 702726</strong>
-              </div>
+            <a href="tel:07442527146" className={styles.stripItem}>
+              <div className={styles.stripIcon}><Phone size={19} /></div>
+              <div><span>Call Us</span><strong>07442 527146</strong></div>
             </a>
           </div>
         </div>

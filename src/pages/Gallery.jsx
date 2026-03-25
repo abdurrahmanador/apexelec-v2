@@ -96,7 +96,7 @@ export default function Gallery() {
           <span className="section-label">Our Work</span>
           <h1>Project Gallery</h1>
           <p style={{ maxWidth: 560, marginTop: 16 }}>
-            Browse a selection of our completed electrical, intruder alarm, and CCTV installations across the UK.
+            Browse a selection of our completed electrical, intruder alarm, and CCTV installations across the Leicestershire.
           </p>
         </div>
       </section>
