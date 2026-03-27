@@ -7,11 +7,10 @@ import styles from './About.module.css'
 
 const CERTS = [
   { src: '/certs/city_guild.png',  alt: 'City & Guilds Qualified' },
-  { src: '/certs/trustmark.png',   alt: 'TrustMark Gov. Endorsed' },
-  { src: '/certs/napit.png',       alt: 'NAPIT Member' },
-  { src: '/certs/napit_elect.png', alt: 'Registered Competent Person' },
-  { src: '/certs/part.png',alt:'Part P Certified'
-  },
+  { src: '/certs/trustmark.png',   alt: 'TrustMark Gov. Endorsed', href: 'https://www.trustmark.org.uk/firms/Apex%20Electrical%20&%20Security-4097740-LE5%200PR?id=c9c91e0b-0b66-4082-bfca-d1084c33b8f6' },
+  { src: '/certs/napit.png',       alt: 'NAPIT Member',            href: 'https://search.napit.org.uk/member/82269/apex-electrical-and-security' },
+  { src: '/certs/napit_elect.png', alt: 'Registered Competent Person', href: 'https://search.napit.org.uk/member/82269/apex-electrical-and-security' },
+  { src: '/certs/part.png',        alt: 'Part P Certified' },
 ]
 
 const STATS = [
@@ -91,11 +90,15 @@ export default function About() {
             <div className={styles.heroCerts}>
               <p className={styles.heroCertsLabel}>Accredited By</p>
               <div className={styles.heroCertCircles}>
-                {CERTS.map((c) => (
-                  <div key={c.alt} className={styles.heroCertCircle} title={c.alt}>
-                    <img src={c.src} alt={c.alt} />
-                  </div>
-                ))}
+                {CERTS.map((c) => {
+                  const Tag = c.href ? 'a' : 'div'
+                  const props = c.href ? { href: c.href, target: '_blank', rel: 'noopener noreferrer', title: c.alt } : { title: c.alt }
+                  return (
+                    <Tag key={c.alt} className={styles.heroCertCircle} {...props}>
+                      <img src={c.src} alt={c.alt} />
+                    </Tag>
+                  )
+                })}
               </div>
             </div>
           </div>
@@ -244,14 +247,18 @@ export default function About() {
 
           {/* Cert circles */}
           <div className={styles.acredCertRow}>
-            {CERTS.map((c) => (
-              <div key={c.alt} className={styles.acredCertCard}>
-                <div className={styles.acredCertCircle}>
-                  <img src={c.src} alt={c.alt} />
-                </div>
-                <span className={styles.acredCertLabel}>{c.alt}</span>
-              </div>
-            ))}
+            {CERTS.map((c) => {
+              const Tag = c.href ? 'a' : 'div'
+              const props = c.href ? { href: c.href, target: '_blank', rel: 'noopener noreferrer' } : {}
+              return (
+                <Tag key={c.alt} className={styles.acredCertCard} {...props}>
+                  <div className={styles.acredCertCircle}>
+                    <img src={c.src} alt={c.alt} />
+                  </div>
+                  <span className={styles.acredCertLabel}>{c.alt}</span>
+                </Tag>
+              )
+            })}
           </div>
 
           {/* List + CTA */}

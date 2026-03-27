@@ -155,18 +155,46 @@
   transform: translateY(-2px);
 }
 
-.heroStars {
-  display: flex;
+/* Google Maps Review Badge */
+.googleBadge {
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   margin-top: 24px;
+  padding: 9px 16px;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 100px;
+  box-shadow: 0 2px 10px rgba(16, 1, 109, 0.06);
+  text-decoration: none;
+  transition: var(--transition);
+  animation: fadeUp 0.6s ease 0.28s both;
+  width: fit-content;
+}
+
+.googleBadge:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 74, 173, 0.12);
+}
+
+.googleBadgeStars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.googleBadgeText {
   font-family: var(--font-heading);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  animation: fadeUp 0.6s ease 0.28s both;
+  color: var(--text-secondary);
+}
+
+.googleIcon {
+  flex-shrink: 0;
 }
 
 /* ── RIGHT COLUMN ── */
@@ -203,6 +231,26 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 8px;
+}
+
+/* Cert circle — link variant */
+a.certCircle {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.certShowcaseItem {
+  text-decoration: none;
+}
+
+a.certShowcaseItem .certShowcaseName {
+  color: var(--text-muted);
+}
+
+a.certShowcaseItem:hover .certShowcaseCircle {
+  border-color: var(--accent);
+  background: white;
+  box-shadow: 0 4px 16px rgba(0, 74, 173, 0.18);
 }
 
 .certCircle {
@@ -806,13 +854,16 @@
   .whyWrap  { grid-template-columns: 1fr; gap: 48px; }
   .whyList  { grid-template-columns: 1fr; }
 
-  /* 5 cert showcase: wrap to 3+2 */
+  /* 5 cert showcase: wrap to row */
   .certShowcaseRow { flex-wrap: wrap; justify-content: center; gap: 10px; }
   .certShowcaseItem { width: calc(20% - 8px); min-width: 56px; }
 
   .stripRow { grid-template-columns: 1fr; }
   .ctaWrap  { flex-direction: column; align-items: flex-start; }
   .bgStripe { display: none; }
+
+  /* Google badge */
+  .googleBadge { margin-top: 20px; }
 }
 
 @media (max-width: 600px) {
@@ -820,10 +871,12 @@
   .heroStatsCard { grid-column: 1; }
   .locationBadge { grid-column: 1; }
   .heroH1 { font-size: clamp(3rem, 11vw, 4.5rem); }
-  .heroCtas { flex-direction: column; }
+  .heroCtas { flex-direction: column; align-items: flex-start; }
   .ctaBtns  { flex-direction: column; }
   /* On small phone, 5 certs go 3+2 */
   .certCircles { grid-template-columns: repeat(3, 1fr); }
   .certCircle  { width: 60px; height: 60px; }
   .certShowcaseItem { width: calc(33% - 8px); }
+  /* Google badge full width on mobile */
+  .googleBadge { width: 100%; justify-content: center; }
 }

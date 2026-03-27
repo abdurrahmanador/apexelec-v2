@@ -2,6 +2,13 @@
    ABOUT — Compact Professional Redesign
    ════════════════════════════════════════════ */
 
+/* ─── Cert link variants ─── */
+a.heroCertCircle,
+a.acredCertCard {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 /* ═══ HERO — compact banner ═══ */
 .hero {
   position: relative;

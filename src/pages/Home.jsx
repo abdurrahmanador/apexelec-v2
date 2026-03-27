@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom'
 import {
   Zap, ShieldCheck, Camera, Phone, Mail, ArrowRight,
-  CheckCircle2, Star, Clock, Award, Users, MessageCircle,
-  ChevronRight, MapPin
+  CheckCircle2, Clock, Award, Users, MessageCircle,
+  ChevronRight, MapPin, Star
 } from 'lucide-react'
 import styles from './Home.module.css'
 
 const CERTS = [
   { src: '/certs/city_guild.png',  alt: 'City & Guilds' },
-  { src: '/certs/trustmark.png',   alt: 'TrustMark' },
-  { src: '/certs/napit.png',       alt: 'NAPIT' },
-  { src: '/certs/napit_elect.png', alt: 'Competent Person' },
-  { src: '/certs/part.png',alt:'Part P Certified' },
+  { src: '/certs/trustmark.png',   alt: 'TrustMark', href: 'https://www.trustmark.org.uk/firms/Apex%20Electrical%20&%20Security-4097740-LE5%200PR?id=c9c91e0b-0b66-4082-bfca-d1084c33b8f6' },
+  { src: '/certs/napit.png',       alt: 'NAPIT',     href: 'https://search.napit.org.uk/member/82269/apex-electrical-and-security' },
+  { src: '/certs/napit_elect.png', alt: 'Competent Person', href: 'https://search.napit.org.uk/member/82269/apex-electrical-and-security' },
+  { src: '/certs/part.png',        alt: 'Part P Certified' },
 ]
 
 const STATS = [
@@ -101,26 +101,43 @@ export default function Home() {
               </a>
             </div>
 
-            <div className={styles.heroStars}>
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={14} fill="var(--accent)" color="var(--accent)" />
-              ))}
-              <span>5-star · 500+ installs</span>
-            </div>
+            <a
+              href="https://maps.app.goo.gl/z4448Q3k2ZwgvRbS6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.googleBadge}
+            >
+              <div className={styles.googleBadgeStars}>
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={13} fill="#FBBC04" color="#FBBC04" />
+                ))}
+              </div>
+              <span className={styles.googleBadgeText}>5.0 · Google Reviews</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" className={styles.googleIcon} aria-label="Google">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+            </a>
           </div>
 
           {/* ── RIGHT COLUMN ── */}
           <div className={styles.heroRight}>
 
-            {/* Cert circles — 2×2 grid */}
+            {/* Cert circles — single row */}
             <div className={styles.certGrid}>
               <p className={styles.certLabel}>Accredited By</p>
               <div className={styles.certCircles}>
-                {CERTS.map((c) => (
-                  <div key={c.alt} className={styles.certCircle} title={c.alt}>
-                    <img src={c.src} alt={c.alt} />
-                  </div>
-                ))}
+                {CERTS.map((c) => {
+                  const Tag = c.href ? 'a' : 'div'
+                  const props = c.href ? { href: c.href, target: '_blank', rel: 'noopener noreferrer', title: c.alt } : { title: c.alt }
+                  return (
+                    <Tag key={c.alt} className={styles.certCircle} {...props}>
+                      <img src={c.src} alt={c.alt} />
+                    </Tag>
+                  )
+                })}
               </div>
             </div>
 
@@ -211,14 +228,18 @@ export default function Home() {
               <div className={styles.certShowcase}>
                 <p className={styles.certShowcaseLabel}>Our Accreditations &amp; Certifications</p>
                 <div className={styles.certShowcaseRow}>
-                  {CERTS.map((c) => (
-                    <div key={c.alt} className={styles.certShowcaseItem}>
-                      <div className={styles.certShowcaseCircle}>
-                        <img src={c.src} alt={c.alt} />
-                      </div>
-                      <span className={styles.certShowcaseName}>{c.alt}</span>
-                    </div>
-                  ))}
+                  {CERTS.map((c) => {
+                    const Tag = c.href ? 'a' : 'div'
+                    const props = c.href ? { href: c.href, target: '_blank', rel: 'noopener noreferrer' } : {}
+                    return (
+                      <Tag key={c.alt} className={styles.certShowcaseItem} {...props}>
+                        <div className={styles.certShowcaseCircle}>
+                          <img src={c.src} alt={c.alt} />
+                        </div>
+                        <span className={styles.certShowcaseName}>{c.alt}</span>
+                      </Tag>
+                    )
+                  })}
                 </div>
               </div>
 

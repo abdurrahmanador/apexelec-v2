@@ -12,7 +12,7 @@ const SERVICES = [
     title: 'Electrical Installations',
     subtitle: 'Full domestic & commercial electrical solutions',
     description:
-      'From new builds to full rewires, our NICEIC-approved electricians handle every aspect of electrical work with precision and compliance. All work is certified and tested to BS7671 standards.',
+      'From new builds to full rewires, our NAPIT-approved electricians handle every aspect of electrical work with precision and compliance. All work is certified and tested to BS7671 standards.',
     items: [
       'Full & partial rewires',
       'Consumer unit / fuse board upgrades',

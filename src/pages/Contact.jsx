@@ -32,7 +32,7 @@ const CONTACT_ITEMS = [
     icon: MapPin,
     label: 'Location',
     value: 'Leicestershire',
-    link: 'https://share.google/Ifq4CGxM6PL3vBuuX',
+    link: 'https://www.google.com/maps/place/Apex+Electrical+%26+Security/@53.0540036,-0.592841,17z/data=!4m6!3m5!1s0x4877617cdaed8b29:0x824f0141d0ef9301!8m2!3d53.0540036!4d-0.592841!16s%2Fg%2F11cn5p75q0',
     desc: 'Covering across the Leicestershire',
   },
 ]
@@ -245,7 +245,7 @@ export default function Contact() {
               <div className={styles.mapFrame}>
                 <iframe
                   title="Apexelec Location"
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2483.2!2d-0.1276!3d51.5074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2393.4!2d-0.592841!3d53.0540036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4877617cdaed8b29%3A0x824f0141d0ef9301!2sApex%20Electrical%20%26%20Security!5e0!3m2!1sen!2suk!4v1711630000000!5m2!1sen!2suk"
                   width="100%"
                   height="360"
                   style={{ border: 0, display: 'block' }}
@@ -256,7 +256,7 @@ export default function Contact() {
               </div>
 
               <a
-                href="https://share.google/Ifq4CGxM6PL3vBuuX"
+                href="https://www.google.com/maps/place/Apex+Electrical+%26+Security/@53.0540036,-0.592841,17z/data=!4m6!3m5!1s0x4877617cdaed8b29:0x824f0141d0ef9301!8m2!3d53.0540036!4d-0.592841!16s%2Fg%2F11cn5p75q0"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`btn btn-outline ${styles.mapBtn}`}
